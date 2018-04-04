@@ -1,0 +1,2 @@
+# PeopleManager
+Core Data 
