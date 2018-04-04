@@ -20,8 +20,6 @@ class PeopleTableViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     /*
     // MARK: - Navigation
 
@@ -31,5 +29,20 @@ class PeopleTableViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+// MARK: - UITableViewDataSource
+extension PeopleTableViewController : UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension PeopleTableViewController: UITableViewDelegate {
 }
