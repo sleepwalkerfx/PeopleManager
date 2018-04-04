@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		5D80B296A143570CCD675420 /* Pods_PeopleManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111EF36FA428DDF2571E0CA7 /* Pods_PeopleManagerTests.framework */; };
 		8145708B2074F2F7000CD72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8145708A2074F2F7000CD72A /* AppDelegate.swift */; };
-		8145708D2074F2F7000CD72A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8145708C2074F2F7000CD72A /* ViewController.swift */; };
 		814570902074F2F7000CD72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8145708E2074F2F7000CD72A /* Main.storyboard */; };
 		814570932074F2F7000CD72A /* PeopleManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 814570912074F2F7000CD72A /* PeopleManager.xcdatamodeld */; };
 		814570952074F2F7000CD72A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814570942074F2F7000CD72A /* Assets.xcassets */; };
 		814570982074F2F7000CD72A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814570962074F2F7000CD72A /* LaunchScreen.storyboard */; };
 		814570A32074F2F7000CD72A /* PeopleManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814570A22074F2F7000CD72A /* PeopleManagerTests.swift */; };
+		817E639920754CB9002A0F09 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E639820754CB9002A0F09 /* PeopleTableViewController.swift */; };
 		9453A07891A9233988E9599E /* Pods_PeopleManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155C6FC7AFDF68AA2A59F18 /* Pods_PeopleManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +35,6 @@
 		7155C6FC7AFDF68AA2A59F18 /* Pods_PeopleManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeopleManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		814570872074F2F7000CD72A /* PeopleManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8145708A2074F2F7000CD72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8145708C2074F2F7000CD72A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8145708F2074F2F7000CD72A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814570922074F2F7000CD72A /* PeopleManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PeopleManager.xcdatamodel; sourceTree = "<group>"; };
 		814570942074F2F7000CD72A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		8145709E2074F2F7000CD72A /* PeopleManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeopleManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		814570A22074F2F7000CD72A /* PeopleManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleManagerTests.swift; sourceTree = "<group>"; };
 		814570A42074F2F7000CD72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		817E639820754CB9002A0F09 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
 		9912ADD106B9A1F1CA5BA5CD /* Pods-PeopleManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleManager/Pods-PeopleManager.release.xcconfig"; sourceTree = "<group>"; };
 		DB6382C8B616CBA1BF8CB7C8 /* Pods-PeopleManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleManagerTests/Pods-PeopleManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,8 +102,8 @@
 		814570892074F2F7000CD72A /* PeopleManager */ = {
 			isa = PBXGroup;
 			children = (
+				817E639720754C91002A0F09 /* ViewControllers */,
 				8145708A2074F2F7000CD72A /* AppDelegate.swift */,
-				8145708C2074F2F7000CD72A /* ViewController.swift */,
 				8145708E2074F2F7000CD72A /* Main.storyboard */,
 				814570942074F2F7000CD72A /* Assets.xcassets */,
 				814570962074F2F7000CD72A /* LaunchScreen.storyboard */,
@@ -120,6 +120,14 @@
 				814570A42074F2F7000CD72A /* Info.plist */,
 			);
 			path = PeopleManagerTests;
+			sourceTree = "<group>";
+		};
+		817E639720754C91002A0F09 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				817E639820754CB9002A0F09 /* PeopleTableViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E472C8C7EE2EF259A6890A38 /* Frameworks */ = {
@@ -339,8 +347,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8145708D2074F2F7000CD72A /* ViewController.swift in Sources */,
 				814570932074F2F7000CD72A /* PeopleManager.xcdatamodeld in Sources */,
+				817E639920754CB9002A0F09 /* PeopleTableViewController.swift in Sources */,
 				8145708B2074F2F7000CD72A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
