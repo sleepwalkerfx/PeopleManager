@@ -18,6 +18,8 @@
 		817E63CD2075598F002A0F09 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E63CC2075598F002A0F09 /* Person.swift */; };
 		817E63CF207559DA002A0F09 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E63CE207559DA002A0F09 /* Teacher.swift */; };
 		817E63D1207559FC002A0F09 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E63D0207559FC002A0F09 /* Student.swift */; };
+		8189D9D32075ED03001C7106 /* AddPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8189D9D22075ED03001C7106 /* AddPeopleViewController.swift */; };
+		8189D9D72076531E001C7106 /* PeoplePersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8189D9D62076531E001C7106 /* PeoplePersistenceManager.swift */; };
 		9453A07891A9233988E9599E /* Pods_PeopleManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155C6FC7AFDF68AA2A59F18 /* Pods_PeopleManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		817E63CC2075598F002A0F09 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		817E63CE207559DA002A0F09 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		817E63D0207559FC002A0F09 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		8189D9D22075ED03001C7106 /* AddPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPeopleViewController.swift; sourceTree = "<group>"; };
+		8189D9D62076531E001C7106 /* PeoplePersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePersistenceManager.swift; sourceTree = "<group>"; };
 		9912ADD106B9A1F1CA5BA5CD /* Pods-PeopleManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleManager/Pods-PeopleManager.release.xcconfig"; sourceTree = "<group>"; };
 		DB6382C8B616CBA1BF8CB7C8 /* Pods-PeopleManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleManagerTests/Pods-PeopleManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +112,7 @@
 		814570892074F2F7000CD72A /* PeopleManager */ = {
 			isa = PBXGroup;
 			children = (
+				8189D9D5207652A0001C7106 /* Persistence */,
 				817E63CB2075596A002A0F09 /* CoreData Models */,
 				817E639720754C91002A0F09 /* ViewControllers */,
 				8145708A2074F2F7000CD72A /* AppDelegate.swift */,
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				817E639820754CB9002A0F09 /* PeopleTableViewController.swift */,
+				8189D9D22075ED03001C7106 /* AddPeopleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -145,6 +151,14 @@
 				817E63D0207559FC002A0F09 /* Student.swift */,
 			);
 			path = "CoreData Models";
+			sourceTree = "<group>";
+		};
+		8189D9D5207652A0001C7106 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				8189D9D62076531E001C7106 /* PeoplePersistenceManager.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		E472C8C7EE2EF259A6890A38 /* Frameworks */ = {
@@ -282,9 +296,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PeopleManager/Pods-PeopleManager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -364,11 +381,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8189D9D32075ED03001C7106 /* AddPeopleViewController.swift in Sources */,
 				814570932074F2F7000CD72A /* PeopleManager.xcdatamodeld in Sources */,
 				817E63D1207559FC002A0F09 /* Student.swift in Sources */,
 				817E63CF207559DA002A0F09 /* Teacher.swift in Sources */,
 				817E639920754CB9002A0F09 /* PeopleTableViewController.swift in Sources */,
 				817E63CD2075598F002A0F09 /* Person.swift in Sources */,
+				8189D9D72076531E001C7106 /* PeoplePersistenceManager.swift in Sources */,
 				8145708B2074F2F7000CD72A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

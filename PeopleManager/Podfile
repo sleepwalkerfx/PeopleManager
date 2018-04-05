@@ -6,6 +6,7 @@ target 'PeopleManager' do
   use_frameworks!
 
   # Pods for PeopleManager
+  pod 'Eureka'
 
   target 'PeopleManagerTests' do
     inherit! :search_paths

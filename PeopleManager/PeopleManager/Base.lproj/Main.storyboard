@@ -48,6 +48,9 @@
                     <navigationItem key="navigationItem" title="People Manager" id="LOt-q0-4Vk">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="c5x-Cj-vVe">
                             <color key="tintColor" red="0.1911550909280777" green="0.6378670334815979" blue="0.26147949695587158" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="QdD-N5-806" kind="presentation" id="aI8-dq-dMw"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -70,20 +73,32 @@
             </objects>
             <point key="canvasLocation" x="-1850" y="45"/>
         </scene>
-        <!--View Controller-->
+        <!--Add User-->
         <scene sceneID="yof-ew-UXL">
             <objects>
-                <viewController id="1wD-br-vCT" sceneMemberID="viewController">
+                <viewController id="1wD-br-vCT" customClass="AddPeopleViewController" customModule="PeopleManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IWP-z5-P4y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SAo-tv-Ufg"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add User" id="Vy7-XZ-otX">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TM3-Bn-H8u">
+                            <connections>
+                                <action selector="dismissViewController:" destination="1wD-br-vCT" id="Zpu-d2-M6x"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="iu0-ly-FIh">
+                            <connections>
+                                <action selector="doneAction:" destination="1wD-br-vCT" id="9tr-5w-8f2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34c-xn-uuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2754" y="821"/>
+            <point key="canvasLocation" x="-2038" y="836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Nz-jH-ksv">
@@ -102,6 +117,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqc-7L-oaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3687" y="45"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="r5S-cY-1nL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QdD-N5-806" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZII-Or-Kur">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1wD-br-vCT" kind="relationship" relationship="rootViewController" id="hhL-Eq-pwU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CEG-6A-KBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2755.1999999999998" y="820.38980509745136"/>
         </scene>
     </scenes>
 </document>
