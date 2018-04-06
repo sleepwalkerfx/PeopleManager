@@ -13,6 +13,9 @@ class AddPeopleViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let ppm = PeoplePersistenceManager()
+        ppm.insertStudent(nationalID: "2222", name: "new student", age: 12, year: 2222)
+        ppm.saveContext()
         configureForm()
     }
 

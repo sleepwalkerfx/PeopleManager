@@ -14,7 +14,8 @@
 		814570952074F2F7000CD72A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814570942074F2F7000CD72A /* Assets.xcassets */; };
 		814570982074F2F7000CD72A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814570962074F2F7000CD72A /* LaunchScreen.storyboard */; };
 		814570A32074F2F7000CD72A /* PeopleManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814570A22074F2F7000CD72A /* PeopleManagerTests.swift */; };
-		817E639920754CB9002A0F09 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E639820754CB9002A0F09 /* PeopleTableViewController.swift */; };
+		816E985F2077451E0065E2BB /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E985E2077451E0065E2BB /* StudentTableViewCell.swift */; };
+		817E639920754CB9002A0F09 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E639820754CB9002A0F09 /* PeopleViewController.swift */; };
 		817E63CD2075598F002A0F09 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E63CC2075598F002A0F09 /* Person.swift */; };
 		817E63CF207559DA002A0F09 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E63CE207559DA002A0F09 /* Teacher.swift */; };
 		817E63D1207559FC002A0F09 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817E63D0207559FC002A0F09 /* Student.swift */; };
@@ -48,7 +49,8 @@
 		8145709E2074F2F7000CD72A /* PeopleManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeopleManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		814570A22074F2F7000CD72A /* PeopleManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleManagerTests.swift; sourceTree = "<group>"; };
 		814570A42074F2F7000CD72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		817E639820754CB9002A0F09 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		816E985E2077451E0065E2BB /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
+		817E639820754CB9002A0F09 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		817E63CC2075598F002A0F09 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		817E63CE207559DA002A0F09 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		817E63D0207559FC002A0F09 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		814570892074F2F7000CD72A /* PeopleManager */ = {
 			isa = PBXGroup;
 			children = (
+				816E985D207744E80065E2BB /* Views */,
 				8189D9D5207652A0001C7106 /* Persistence */,
 				817E63CB2075596A002A0F09 /* CoreData Models */,
 				817E639720754C91002A0F09 /* ViewControllers */,
@@ -134,10 +137,18 @@
 			path = PeopleManagerTests;
 			sourceTree = "<group>";
 		};
+		816E985D207744E80065E2BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				816E985E2077451E0065E2BB /* StudentTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		817E639720754C91002A0F09 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				817E639820754CB9002A0F09 /* PeopleTableViewController.swift */,
+				817E639820754CB9002A0F09 /* PeopleViewController.swift */,
 				8189D9D22075ED03001C7106 /* AddPeopleViewController.swift */,
 			);
 			path = ViewControllers;
@@ -385,7 +396,8 @@
 				814570932074F2F7000CD72A /* PeopleManager.xcdatamodeld in Sources */,
 				817E63D1207559FC002A0F09 /* Student.swift in Sources */,
 				817E63CF207559DA002A0F09 /* Teacher.swift in Sources */,
-				817E639920754CB9002A0F09 /* PeopleTableViewController.swift in Sources */,
+				817E639920754CB9002A0F09 /* PeopleViewController.swift in Sources */,
+				816E985F2077451E0065E2BB /* StudentTableViewCell.swift in Sources */,
 				817E63CD2075598F002A0F09 /* Person.swift in Sources */,
 				8189D9D72076531E001C7106 /* PeoplePersistenceManager.swift in Sources */,
 				8145708B2074F2F7000CD72A /* AppDelegate.swift in Sources */,

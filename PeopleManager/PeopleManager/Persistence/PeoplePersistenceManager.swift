@@ -22,6 +22,7 @@ class PeoplePersistenceManager {
     }
 
     //MARK: Students Operations
+    @discardableResult
     func insertStudent(nationalID: String, name: String, age: Int16 , year: Int16) -> Student? {
         return try? Student.findOrCreateStudent(nationalID: nationalID, name: name, age: age, year: year, into: persistenceContainer.viewContext)
     }
@@ -29,5 +30,15 @@ class PeoplePersistenceManager {
     func fetchAllStudents() -> [Student] {
         let allStudents = Student.fetchAll(context: persistenceContainer.viewContext)
         return allStudents ?? [Student]()
+    }
+
+    func saveContext(){
+        if self.persistenceContainer.viewContext.hasChanges {
+            do {
+                try self.persistenceContainer.viewContext.save()
+            } catch {
+                print("Save error \(error)")
+            }
+        }
     }
 }

@@ -16,15 +16,15 @@ class Student: Person {
             if let student = try Student.findStudent(nationalIdNumber: nationalID, inContext: context) {
                 return student
             }
-
         }catch {
             throw error
         }
         
-        let student = Student(context: context)
+        let student =  Student(context: context)
         student.name = name
         student.age = age
         student.year = year
+        student.nationalIdentityNo = nationalID
         return student
     }
 
@@ -44,7 +44,6 @@ class Student: Person {
         return nil
     }
 
-
     class func fetchAll(context: NSManagedObjectContext) -> [Student]? {
         let request:NSFetchRequest<Student> = Student.fetchRequest()
         let results = try? context.fetch(request)
@@ -55,16 +54,6 @@ class Student: Person {
         context.delete(student)
     }
 
-    func save(context: NSManagedObjectContext) {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                print("Save error \(error)")
-            }
-        }
-
-    }
 }
 // add people manager class // facade
 // use this class to query for existing people,

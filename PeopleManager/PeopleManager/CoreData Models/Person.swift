@@ -16,4 +16,13 @@ class Person: NSManagedObject {
 //        let results = try? context.fetch(request)
 //        return results
 //    }
+    class func save(context: NSManagedObjectContext) {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                print("Save error \(error)")
+            }
+        }
+    }
 }
