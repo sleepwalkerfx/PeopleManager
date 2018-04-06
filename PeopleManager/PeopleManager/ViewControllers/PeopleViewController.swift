@@ -34,29 +34,30 @@ class PeopleViewController: UIViewController {
         if let persistenceManager = self.peoplePersistenceManager {
             let request: NSFetchRequest<Student> = Student.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "name",ascending:true)]
-           // request.predicate
             fetchResultController = NSFetchedResultsController<Student>(fetchRequest: request, managedObjectContext: persistenceManager.persistenceContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         }
         try? fetchResultController?.performFetch()
         tableView.reloadData()
     }
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let personDetailsVC = segue.destination as? PersonDetailsViewController {
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            personDetailsVC.person = fetchResultController?.object(at: indexPath!)
+        }
     }
-    */
+
 }
 
 // MARK: - UITableViewDataSource
+
 extension PeopleViewController : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchResultController?.sections {
-           return sections[section].numberOfObjects
+            return sections[section].numberOfObjects
         }
         return 0
     }

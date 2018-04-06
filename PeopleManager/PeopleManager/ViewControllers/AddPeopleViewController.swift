@@ -24,15 +24,16 @@ class AddPeopleViewController: FormViewController {
             <<< TextRow(){ row in
                 row.title = "Name"
                 row.placeholder = "Enter name here"
+                row.tag = "personName"
             }
             <<< PhoneRow(){
                 $0.title = "Phone Number"
                 $0.placeholder = "And phone number here"
             }
             +++ Section("Other")
-            <<< DateRow(){
-                $0.title = "Birthday"
-                $0.value = Date(timeIntervalSinceReferenceDate: 0)
+            <<< IntRow(){
+                $0.title = "Age"
+                $0.value = 0
             }
             +++ Section(header: "Email Rule, Required Rule", footer: "Options: Validates on change after blurred")
             <<< TextRow() {
@@ -60,6 +61,8 @@ class AddPeopleViewController: FormViewController {
 
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
         print("done tapped")
+        //let nameRow:TextRow? = form.rowBy(tag: <#T##String#>)
+
     }
     /*
      // MARK: - Navigation
