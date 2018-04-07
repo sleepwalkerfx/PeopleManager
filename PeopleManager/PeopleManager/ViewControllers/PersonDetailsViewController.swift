@@ -52,15 +52,33 @@ class PersonDetailsViewController: UIViewController {
         }
     }
     @IBAction func editAction(_ sender: UIBarButtonItem) {
-        guard let addPeopleNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddPeopleNC") as? UINavigationController else {
+        if person is Student {
+            editStudent(student: person as! Student)
+        } else if person is Teacher {
+            editTeacher(teacher: person as! Teacher)
+        }
+    }
+
+    private func editStudent(student:Student){
+        guard let editStudentNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "editStudentNC") as? UINavigationController else {
             return
         }
-        //        if let addpeopleVC = addPeopleNavigationController.viewControllers.first as? AddPeopleViewController {
-        //            addpeopleVC.title = "Edit Person"
-        //            addpeopleVC.editingPerson = self.person
-        //            self.present(addPeopleNavigationController, animated: true, completion: nil)
-        //        }
+        if let editStudentVC = editStudentNavigationController.viewControllers.first as? AddStudentViewController {
+            editStudentVC.title = "Edit Student"
+            editStudentVC.editingStudent =  student
+            self.present(editStudentNavigationController, animated: true, completion: nil)
+        }
+    }
 
+    private func editTeacher(teacher:Teacher){
+        guard let editTeacherNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "editTeacherNC") as? UINavigationController else {
+            return
+        }
+        if let editTeacherVC = editTeacherNavigationController.viewControllers.first as? AddTeacherViewController {
+            editTeacherVC.title = "Edit Teacher"
+            editTeacherVC.editingTeacher = teacher
+            self.present(editTeacherNavigationController, animated: true, completion: nil)
+        }
     }
 
 
