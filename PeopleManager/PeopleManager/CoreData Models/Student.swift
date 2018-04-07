@@ -13,7 +13,7 @@ class Student: Person {
 
     class func createStudent(nationalID: String, name: String, age: Int16, year: Int16, into context: NSManagedObjectContext) throws -> Student {
         do {
-            if try self.findPerson(nationalIdNumber: nationalID, inContext: context) != nil{
+            if try findPerson(nationalIdNumber: nationalID, inContext: context) != nil{
                 print("User already exists!")
                 throw PersonError.idAlreadyExist
             }
