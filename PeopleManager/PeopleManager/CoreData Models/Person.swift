@@ -28,7 +28,6 @@ class Person: NSManagedObject {
     class func findPerson(nationalIdNumber: String, inContext context: NSManagedObjectContext) throws -> Person? {
         let request : NSFetchRequest<Person> = Person.fetchRequest()
         request.predicate = NSPredicate(format: "nationalIdentityNo = %@", nationalIdNumber)
-
         do {
             let results = try  context.fetch(request)
             if results.count > 0 {
