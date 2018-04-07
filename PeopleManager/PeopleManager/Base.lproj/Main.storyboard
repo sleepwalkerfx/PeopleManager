@@ -172,7 +172,7 @@
                     <navigationItem key="navigationItem" title="ADD STUDENT" id="Vy7-XZ-otX">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TM3-Bn-H8u">
                             <connections>
-                                <action selector="dismissViewController:" destination="1wD-br-vCT" id="Zpu-d2-M6x"/>
+                                <action selector="cancelAction:" destination="1wD-br-vCT" id="0cX-JK-NWF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="iu0-ly-FIh">
@@ -216,7 +216,7 @@
         <!--ADD USER-->
         <scene sceneID="N8T-gJ-Rdp">
             <objects>
-                <viewController id="ub8-gU-gLY" sceneMemberID="viewController">
+                <viewController id="ub8-gU-gLY" customClass="AddNewPersonViewController" customModule="PeopleManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ndN-eO-g1Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +276,11 @@
                         <viewLayoutGuide key="safeArea" id="Tn6-Q5-Tsu"/>
                     </view>
                     <navigationItem key="navigationItem" title="ADD USER" id="Rk5-iI-4Gd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="0iw-ke-8ml"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="0iw-ke-8ml">
+                            <connections>
+                                <action selector="cancelAction:" destination="ub8-gU-gLY" id="rTu-1L-Jz6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8b-89-c3b" userLabel="First Responder" sceneMemberID="firstResponder"/>

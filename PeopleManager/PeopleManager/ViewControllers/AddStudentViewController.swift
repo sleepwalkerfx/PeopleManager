@@ -76,11 +76,6 @@ class AddStudentViewController: FormViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true) {
-        }
-    }
-
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
 
         guard let studentDetails = getStudentDetails() else {
@@ -138,8 +133,11 @@ class AddStudentViewController: FormViewController {
         dismissVC()
     }
 
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismissVC()
+    }
+
     private func dismissVC() {
         self.dismiss(animated: true, completion: nil)
     }
-
 }
