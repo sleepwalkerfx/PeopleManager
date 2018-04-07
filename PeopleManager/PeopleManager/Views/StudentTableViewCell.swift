@@ -8,8 +8,9 @@
 
 import UIKit
 
-class StudentTableViewCell: UITableViewCell {
+class PersonTableViewCell: UITableViewCell {
 
+    static let reuseIdentifier = "studentCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

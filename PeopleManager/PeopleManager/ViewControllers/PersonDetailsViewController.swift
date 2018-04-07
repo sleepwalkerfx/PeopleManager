@@ -13,7 +13,12 @@ class PersonDetailsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
 
+    @IBOutlet weak var extraInfoFeild1: UILabel!
+    @IBOutlet weak var extraInfoFeild2: UILabel!
+    @IBOutlet weak var extraInfoField3: UILabel!
+    
     var person: Person?
 
     override func viewDidLoad() {
@@ -24,12 +29,28 @@ class PersonDetailsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if person != nil {
-            self.nameLabel.text = person?.name ?? "n/a"
-            self.idLabel.text = "ID: \(person?.nationalIdentityNo ?? "n/a")"
-        }
+        setupUI()
     }
 
+    private func setupUI() {
+        if person != nil {
+            self.nameLabel.text = "Name: \(String(describing: person!.name ?? "n/a"))"
+            self.idLabel.text = "Id: \(person!.nationalIdentityNo ?? "n/a")"
+            self.ageLabel.text = "Age: \(person!.age)"
+
+            if person is Student {
+                self.titleLabel.text = "STUDENT PROFILE"
+                self.extraInfoFeild1.text = "Course Year: \((person as! Student).year)"
+            }
+
+            if person is Teacher {
+                self.titleLabel.text = "TEACHER PROFILE"
+                self.extraInfoFeild1.text = "Salary: \((person as! Teacher).salary)"
+                self.extraInfoFeild2.text = "Subject: \((person as! Teacher).subject ?? "")"
+
+            }
+        }
+    }
     @IBAction func editAction(_ sender: UIBarButtonItem) {
         guard let addPeopleNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddPeopleNC") as? UINavigationController else {
             return
