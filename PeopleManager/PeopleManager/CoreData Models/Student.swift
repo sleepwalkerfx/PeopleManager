@@ -12,18 +12,22 @@ import CoreData
 class Student: Person {
 
     class func findOrCreateStudent(nationalID: String, name: String, age: Int16, year: Int16, into context: NSManagedObjectContext) throws -> Student {
+        var student:Student
+
         do {
-            if let student = try Student.findStudent(nationalIdNumber: nationalID, inContext: context) {
-                return student
+            if let existingStudent = try Student.findStudent(nationalIdNumber: nationalID, inContext: context) {
+                student = existingStudent
+            } else{
+                student  =  Student(context: context)
             }
         }catch {
             throw error
         }
         
-        let student =  Student(context: context)
         student.name = name
         student.age = age
         student.year = year
+        student.groupType = "Students"
         student.nationalIdentityNo = nationalID
         return student
     }
@@ -50,9 +54,6 @@ class Student: Person {
         return results
     }
 
-    class func remove( student: Student, from context: NSManagedObjectContext) {
-        context.delete(student)
-    }
 
 }
 // add people manager class // facade

@@ -12,11 +12,13 @@ import CoreData
 class Teacher: Person {
 
     @discardableResult
-    class func insert( name: String, age: Int16, salry: Float, subject: String, into context: NSManagedObjectContext) -> Teacher {
+    class func insert(nationalIdNo:String, name: String, age: Int16, salry: Float, subject: String, into context: NSManagedObjectContext) -> Teacher {
         let teacher = Teacher(context: context)
+        teacher.nationalIdentityNo = nationalIdNo
         teacher.name = name
         teacher.age = age
         teacher.subject = subject
+        teacher.groupType = "Teachers"
         return teacher
     }
 }

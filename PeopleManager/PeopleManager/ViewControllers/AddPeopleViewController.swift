@@ -11,12 +11,25 @@ import Eureka
 
 class AddPeopleViewController: FormViewController {
 
+    var editingPerson: Person?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let ppm = PeoplePersistenceManager()
-        ppm.insertStudent(nationalID: "2222", name: "new student", age: 12, year: 2222)
-        ppm.saveContext()
         configureForm()
+        configureUI()
+    }
+
+    private func configureUI() {
+        if editingPerson != nil {
+            let nameRow:TextRow? = form.rowBy(tag: "personName")
+            nameRow?.value = editingPerson?.name!
+
+            let idRow:TextRow? = form.rowBy(tag: "id")
+            idRow?.value = editingPerson?.nationalIdentityNo!
+
+            let ageRow:IntRow? = form.rowBy(tag: "age")
+           // ageRow?.value = editingPerson?.age as! Int
+        }
     }
 
     private func configureForm() {
@@ -26,14 +39,16 @@ class AddPeopleViewController: FormViewController {
                 row.placeholder = "Enter name here"
                 row.tag = "personName"
             }
-            <<< PhoneRow(){
-                $0.title = "Phone Number"
-                $0.placeholder = "And phone number here"
+            <<< TextRow(){
+                $0.title = "ID Number"
+                $0.placeholder = "And ID number here"
+                $0.tag = "id"
             }
             +++ Section("Other")
             <<< IntRow(){
                 $0.title = "Age"
                 $0.value = 0
+                $0.tag = "age"
             }
             +++ Section(header: "Email Rule, Required Rule", footer: "Options: Validates on change after blurred")
             <<< TextRow() {
@@ -61,8 +76,36 @@ class AddPeopleViewController: FormViewController {
 
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
         print("done tapped")
-        //let nameRow:TextRow? = form.rowBy(tag: <#T##String#>)
+        let nameRow:TextRow? = form.rowBy(tag: "personName")
+        let idRow:TextRow? = form.rowBy(tag: "id")
+        let ageRow:IntRow? = form.rowBy(tag: "age")
+        guard let name = nameRow?.value else {
+            print("no name given")
+            return
+        }
+        guard let id = idRow?.value else {
+            print("no id given")
+            return
+        }
 
+        guard let group = ageRow?.value else {
+            print("no group given")
+            return
+        }
+        if group == 0 {
+            createNewStudent(nationalID: id, name: name, age: 18, year: 2019)
+        } else {
+            Teacher.insert(nationalIdNo: id, name: name, age: 14, salry: 234.9, subject: "subject", into: AppDelegate.viewContext)
+            try? AppDelegate.viewContext.save()
+        }
+
+    }
+
+    private func createNewStudent(nationalID:String,name:String,age:Int16,year:Int16) {
+        let ppm = PeoplePersistenceManager()
+        ppm.insertStudent(nationalID: nationalID, name: name, age: age, year: year)
+        ppm.saveContext()
+        self.dismiss(animated: true, completion: nil)
     }
     /*
      // MARK: - Navigation

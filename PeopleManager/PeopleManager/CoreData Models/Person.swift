@@ -25,4 +25,8 @@ class Person: NSManagedObject {
             }
         }
     }
+
+    class func remove( person: Person, from context: NSManagedObjectContext) {
+        context.delete(person)
+    }
 }
