@@ -18,11 +18,16 @@ class PersonDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if person != nil {
             self.nameLabel.text = person?.name ?? "n/a"
             self.idLabel.text = "ID: \(person?.nationalIdentityNo ?? "n/a")"
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

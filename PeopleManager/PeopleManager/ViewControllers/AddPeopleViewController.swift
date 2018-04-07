@@ -28,7 +28,7 @@ class AddPeopleViewController: FormViewController {
             idRow?.value = editingPerson?.nationalIdentityNo!
 
             let ageRow:IntRow? = form.rowBy(tag: "age")
-           // ageRow?.value = editingPerson?.age as! Int
+            // ageRow?.value = editingPerson?.age as! Int
         }
     }
 
@@ -93,20 +93,43 @@ class AddPeopleViewController: FormViewController {
             return
         }
         if group == 0 {
-            createNewStudent(nationalID: id, name: name, age: 18, year: 2019)
+            if editingPerson != nil {
+                editingPerson?.name = name
+                editingPerson?.nationalIdentityNo = id
+                try? AppDelegate.viewContext.save()
+                self.dismiss(animated: true, completion: nil)
+
+            }else {
+                createStudent(nationalID: id, name: name, age: 18, year: 2019)
+            }
         } else {
-            Teacher.insert(nationalIdNo: id, name: name, age: 14, salry: 234.9, subject: "subject", into: AppDelegate.viewContext)
-            try? AppDelegate.viewContext.save()
+            if editingPerson != nil {
+                editingPerson?.name = name
+                editingPerson?.nationalIdentityNo = id
+                try? AppDelegate.viewContext.save()
+                self.dismiss(animated: true, completion: nil)
+
+            } else {
+                createTeacher(nationalID: id, name: name, age: 20, salary: 394.0, subject: "subject here")
+            }
         }
 
     }
 
-    private func createNewStudent(nationalID:String,name:String,age:Int16,year:Int16) {
-        let ppm = PeoplePersistenceManager()
-        ppm.insertStudent(nationalID: nationalID, name: name, age: age, year: year)
-        ppm.saveContext()
+    private func createStudent(nationalID:String,name:String,age:Int16,year:Int16) {
+        let manager = PeoplePersistenceManager()
+        manager.createStudent(nationalID: nationalID, name: name, age: age, year: year)
+        manager.saveContext()
         self.dismiss(animated: true, completion: nil)
     }
+
+    private func createTeacher(nationalID:String,name:String,age:Int16,salary:Float,subject:String) {
+        let manager = PeoplePersistenceManager()
+        manager.createTeacher(nationalID: nationalID, name: name, age: age, salary: salary, subject: subject)
+        manager.saveContext()
+        self.dismiss(animated: true, completion: nil)
+    }
+
     /*
      // MARK: - Navigation
 

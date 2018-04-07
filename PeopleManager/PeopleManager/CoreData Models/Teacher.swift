@@ -11,14 +11,28 @@ import CoreData
 
 class Teacher: Person {
 
-    @discardableResult
-    class func insert(nationalIdNo:String, name: String, age: Int16, salry: Float, subject: String, into context: NSManagedObjectContext) -> Teacher {
-        let teacher = Teacher(context: context)
-        teacher.nationalIdentityNo = nationalIdNo
+    class func createTeacher(nationalID: String, name: String, age: Int16, salary: Float, subject:String, into context: NSManagedObjectContext) throws -> Teacher {
+        do {
+            if try Teacher.findPerson(nationalIdNumber: nationalID, inContext: context) != nil {
+                print("User already exists with ID!")
+                throw PersonError.idAlreadyExist
+            }
+        }catch {
+            throw error
+        }
+        let teacher  =  Teacher(context: context)
         teacher.name = name
         teacher.age = age
+        teacher.salary = salary
         teacher.subject = subject
         teacher.groupType = "Teachers"
+        teacher.nationalIdentityNo = nationalID
         return teacher
+    }
+
+    class func fetchAll(context: NSManagedObjectContext) -> [Teacher]? {
+        let request:NSFetchRequest<Teacher> = Teacher.fetchRequest()
+        let results = try? context.fetch(request)
+        return results
     }
 }

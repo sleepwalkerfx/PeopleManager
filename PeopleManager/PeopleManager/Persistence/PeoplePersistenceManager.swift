@@ -21,18 +21,7 @@ class PeoplePersistenceManager {
         self.init(container: AppDelegate.persistentConainer)
     }
 
-    //MARK: Students Operations
-    @discardableResult
-    func insertStudent(nationalID: String, name: String, age: Int16 , year: Int16) -> Student? {
-        return try? Student.findOrCreateStudent(nationalID: nationalID, name: name, age: age, year: year, into: persistenceContainer.viewContext)
-    }
-
-    func fetchAllStudents() -> [Student] {
-        let allStudents = Student.fetchAll(context: persistenceContainer.viewContext)
-        return allStudents ?? [Student]()
-    }
-
-    func saveContext(){
+    func saveContext() {
         if self.persistenceContainer.viewContext.hasChanges {
             do {
                 try self.persistenceContainer.viewContext.save()
@@ -41,4 +30,35 @@ class PeoplePersistenceManager {
             }
         }
     }
+    
+    //MARK: Students Operations
+
+    @discardableResult
+    func createStudent(nationalID: String, name: String, age: Int16 , year: Int16) -> Student? {
+        do {
+            return try Student.createStudent(nationalID: nationalID, name: name, age: age, year: year, into: persistenceContainer.viewContext)
+        } catch PersonError.idAlreadyExist {
+            print("USER EXIST EXCEPTION!")
+        } catch {
+        }
+        return nil
+    }
+
+    func fetchAllStudents() -> [Student] {
+        let allStudents = Student.fetchAll(context: persistenceContainer.viewContext)
+        return allStudents ?? [Student]()
+    }
+
+    //MARK: Teachers Operations
+    @discardableResult
+    func createTeacher(nationalID: String, name: String, age: Int16 , salary: Float, subject:String) -> Teacher? {
+        return try? Teacher.createTeacher(nationalID: nationalID, name: name, age: age, salary: salary, subject: subject, into: persistenceContainer.viewContext)
+    }
+
+    func fetchAllTeachers() -> [Student] {
+        let allStudents = Student.fetchAll(context: persistenceContainer.viewContext)
+        return allStudents ?? [Student]()
+    }
+
+
 }

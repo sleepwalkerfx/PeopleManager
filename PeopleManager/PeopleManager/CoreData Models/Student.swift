@@ -11,19 +11,16 @@ import CoreData
 
 class Student: Person {
 
-    class func findOrCreateStudent(nationalID: String, name: String, age: Int16, year: Int16, into context: NSManagedObjectContext) throws -> Student {
-        var student:Student
-
+    class func createStudent(nationalID: String, name: String, age: Int16, year: Int16, into context: NSManagedObjectContext) throws -> Student {
         do {
-            if let existingStudent = try Student.findStudent(nationalIdNumber: nationalID, inContext: context) {
-                student = existingStudent
-            } else{
-                student  =  Student(context: context)
+            if try self.findPerson(nationalIdNumber: nationalID, inContext: context) != nil{
+                print("User already exists!")
+                throw PersonError.idAlreadyExist
             }
         }catch {
             throw error
         }
-        
+        let student  =  Student(context: context)
         student.name = name
         student.age = age
         student.year = year
@@ -32,21 +29,6 @@ class Student: Person {
         return student
     }
 
-    class func findStudent(nationalIdNumber: String, inContext context: NSManagedObjectContext) throws -> Student? {
-        let request : NSFetchRequest<Student> = Student.fetchRequest()
-        request.predicate = NSPredicate(format: "nationalIdentityNo = %@", nationalIdNumber)
-
-        do {
-            let results = try  context.fetch(request)
-            if results.count > 0 {
-                assert(results.count == 1, "Database is inconsistent. Contains multiple person objects with same national ID number")
-                return results[0]
-            }
-        } catch {
-            throw error
-        }
-        return nil
-    }
 
     class func fetchAll(context: NSManagedObjectContext) -> [Student]? {
         let request:NSFetchRequest<Student> = Student.fetchRequest()
