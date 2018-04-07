@@ -37,14 +37,14 @@ class PersonDetailsViewController: UIViewController {
     
     @IBAction func editAction(_ sender: UIBarButtonItem) {
 
-        guard let addPeopleNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddPeopleVC") as? UINavigationController else {
+        guard let addPeopleNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "AddPeopleNC") as? UINavigationController else {
             return
         }
-        if let addpeopleVC = addPeopleNavigationController.viewControllers.first as? AddPeopleViewController {
-            addpeopleVC.title = "Edit Person"
-            addpeopleVC.editingPerson = self.person
-            self.present(addPeopleNavigationController, animated: true, completion: nil)
-        }
+//        if let addpeopleVC = addPeopleNavigationController.viewControllers.first as? AddPeopleViewController {
+//            addpeopleVC.title = "Edit Person"
+//            addpeopleVC.editingPerson = self.person
+//            self.present(addPeopleNavigationController, animated: true, completion: nil)
+//        }
 
     }
     

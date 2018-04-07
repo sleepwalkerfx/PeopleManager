@@ -157,19 +157,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULg-us-OIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1850.4000000000001" y="44.527736131934034"/>
+            <point key="canvasLocation" x="-1812" y="45"/>
         </scene>
-        <!--Add User-->
+        <!--ADD STUDENT-->
         <scene sceneID="yof-ew-UXL">
             <objects>
-                <viewController id="1wD-br-vCT" customClass="AddPeopleViewController" customModule="PeopleManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1wD-br-vCT" customClass="AddStudentViewController" customModule="PeopleManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IWP-z5-P4y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SAo-tv-Ufg"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add User" id="Vy7-XZ-otX">
+                    <navigationItem key="navigationItem" title="ADD STUDENT" id="Vy7-XZ-otX">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TM3-Bn-H8u">
                             <connections>
                                 <action selector="dismissViewController:" destination="1wD-br-vCT" id="Zpu-d2-M6x"/>
@@ -184,7 +184,96 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34c-xn-uuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1828" y="820"/>
+            <point key="canvasLocation" x="-847" y="820"/>
+        </scene>
+        <!--ADD TEACHER-->
+        <scene sceneID="DMH-n1-uZl">
+            <objects>
+                <viewController id="WTm-Z2-9df" customClass="AddPersonViewController" customModule="PeopleManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jgu-bP-fo7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="B1s-qg-nH1"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ADD TEACHER" id="GEI-ZN-UDY">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="QCd-la-e2I"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Lwm-rn-Br9"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kod-hl-EEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1890" y="1646"/>
+        </scene>
+        <!--ADD USER-->
+        <scene sceneID="N8T-gJ-Rdp">
+            <objects>
+                <viewController id="ub8-gU-gLY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ndN-eO-g1Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRZ-tX-VpC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHl-CT-8qf">
+                                        <rect key="frame" x="130.5" y="126.5" width="113" height="47"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                        <state key="normal" title="STUDENT">
+                                            <color key="titleColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="1wD-br-vCT" kind="show" id="SiF-yC-sKU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tHl-CT-8qf" firstAttribute="centerX" secondItem="WRZ-tX-VpC" secondAttribute="centerX" id="0m1-5H-m7Q"/>
+                                    <constraint firstItem="tHl-CT-8qf" firstAttribute="centerY" secondItem="WRZ-tX-VpC" secondAttribute="centerY" id="Nim-vu-HYG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwS-cY-XIc">
+                                <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrA-tZ-3YN">
+                                        <rect key="frame" x="131" y="127.5" width="112" height="47"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                        <state key="normal" title="TEACHER">
+                                            <color key="titleColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="WTm-Z2-9df" kind="show" id="hZK-FE-2IN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.68888300657272339" green="0.71366006135940552" blue="0.73448425531387329" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="JrA-tZ-3YN" firstAttribute="centerX" secondItem="nwS-cY-XIc" secondAttribute="centerX" id="6Fx-cG-S4y"/>
+                                    <constraint firstItem="JrA-tZ-3YN" firstAttribute="centerY" secondItem="nwS-cY-XIc" secondAttribute="centerY" id="Gf4-bm-lg5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WRZ-tX-VpC" firstAttribute="leading" secondItem="Tn6-Q5-Tsu" secondAttribute="leading" id="54J-sO-nlL"/>
+                            <constraint firstItem="nwS-cY-XIc" firstAttribute="trailing" secondItem="Tn6-Q5-Tsu" secondAttribute="trailing" id="IOW-y2-cvX"/>
+                            <constraint firstItem="nwS-cY-XIc" firstAttribute="leading" secondItem="Tn6-Q5-Tsu" secondAttribute="leading" id="Ml3-mi-obp"/>
+                            <constraint firstItem="nwS-cY-XIc" firstAttribute="top" secondItem="WRZ-tX-VpC" secondAttribute="bottom" id="UoB-fA-S0a"/>
+                            <constraint firstItem="WRZ-tX-VpC" firstAttribute="trailing" secondItem="Tn6-Q5-Tsu" secondAttribute="trailing" id="WFi-Z8-UuM"/>
+                            <constraint firstItem="WRZ-tX-VpC" firstAttribute="height" secondItem="nwS-cY-XIc" secondAttribute="height" id="Yx9-E6-hB1"/>
+                            <constraint firstItem="nwS-cY-XIc" firstAttribute="bottom" secondItem="Tn6-Q5-Tsu" secondAttribute="bottom" id="c1B-Ny-V79"/>
+                            <constraint firstItem="WRZ-tX-VpC" firstAttribute="top" secondItem="Tn6-Q5-Tsu" secondAttribute="top" id="uTJ-g0-cO5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tn6-Q5-Tsu"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ADD USER" id="Rk5-iI-4Gd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="0iw-ke-8ml"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b8b-89-c3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1890.4000000000001" y="819.94002998500753"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Nz-jH-ksv">
@@ -215,7 +304,7 @@
         <!--Navigation Controller-->
         <scene sceneID="r5S-cY-1nL">
             <objects>
-                <navigationController storyboardIdentifier="AddPeopleVC" automaticallyAdjustsScrollViewInsets="NO" id="QdD-N5-806" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AddPeopleNC" automaticallyAdjustsScrollViewInsets="NO" id="QdD-N5-806" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ZII-Or-Kur">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -228,7 +317,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1wD-br-vCT" kind="relationship" relationship="rootViewController" id="hhL-Eq-pwU"/>
+                        <segue destination="ub8-gU-gLY" kind="relationship" relationship="rootViewController" id="zAa-Sx-X8M"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEG-6A-KBK" userLabel="First Responder" sceneMemberID="firstResponder"/>

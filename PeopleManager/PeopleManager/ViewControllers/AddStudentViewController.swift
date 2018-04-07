@@ -9,7 +9,7 @@
 import UIKit
 import Eureka
 
-class AddPeopleViewController: FormViewController {
+class AddStudentViewController: FormViewController {
 
     var editingPerson: Person?
     

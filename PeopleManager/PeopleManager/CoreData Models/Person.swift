@@ -14,12 +14,7 @@ enum PersonError: Error {
 }
 
 class Person: NSManagedObject {
-    
-//    class func fetchAll <T:NSManagedObject> (context: NSManagedObjectContext) -> [T]? {
-//        let request:NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
-//        let results = try? context.fetch(request)
-//        return results
-//    }
+
     class func save(context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
@@ -45,8 +40,15 @@ class Person: NSManagedObject {
         }
         return nil
     }
-
+    
     class func remove( person: Person, from context: NSManagedObjectContext) {
         context.delete(person)
     }
+
+
+    //    class func fetchAll <T:NSManagedObject> (context: NSManagedObjectContext) -> [T]? {
+    //        let request:NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
+    //        let results = try? context.fetch(request)
+    //        return results
+    //    }
 }
