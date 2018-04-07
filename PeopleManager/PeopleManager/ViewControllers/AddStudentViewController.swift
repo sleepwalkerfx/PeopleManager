@@ -38,25 +38,33 @@ class AddStudentViewController: FormViewController {
                 $0.title = "ID Number"
                 $0.placeholder = "Enter ID number here"
                 $0.tag = "student_id"
+                $0.value = editingStudent?.nationalIdentityNo
+                if isEditMode {
+                    $0.disabled = true
+                }
             }
             <<< TextRow(){ row in
                 row.title = "Name"
                 row.placeholder = "Enter your name here"
                 row.tag = "student_name"
+                row.value = editingStudent?.name
             }
             <<< IntRow(){
                 $0.title = "Age"
                 $0.placeholder = "Enter your age here"
-                //$0.value = 0
                 $0.tag = "student_age"
+                if isEditMode {
+                    $0.value = Int(editingStudent!.age)
+                }
             }
             +++ Section("Other Details")
             <<< IntRow(){
                 $0.title = "Year"
                 $0.placeholder = "Course Year"
-                // $0.value = 0
                 $0.tag = "student_year"
-            }
+                if isEditMode {
+                    $0.value = Int(editingStudent!.year)
+                }        }
 
         //            +++ Section(header: "Email Rule, Required Rule", footer: "Options: Validates on change after blurred")
         //            <<< TextRow() {

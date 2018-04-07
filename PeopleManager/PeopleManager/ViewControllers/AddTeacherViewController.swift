@@ -37,29 +37,39 @@ class AddTeacherViewController: FormViewController {
                 $0.title = "ID Number"
                 $0.placeholder = "Enter ID number here"
                 $0.tag = "teacher_id"
+                $0.value = editingTeacher?.nationalIdentityNo
+                if isEditMode {
+                    $0.disabled = true
+                }
             }
             <<< TextRow(){ row in
                 row.title = "Name"
                 row.placeholder = "Enter your name here"
                 row.tag = "teacher_name"
+                row.value = editingTeacher?.name
             }
             <<< IntRow(){
                 $0.title = "Age"
                 $0.placeholder = "Enter your age here"
-                //$0.value = 0
                 $0.tag = "teacher_age"
+                if isEditMode {
+                $0.value = Int(editingTeacher!.age)
+                }
             }
             +++ Section("Other Details")
             <<< DecimalRow(){
                 $0.title = "Salary"
                 $0.placeholder = "Monthly salary"
-                // $0.value = 0
                 $0.tag = "teacher_salary"
+                if isEditMode {
+                    $0.value = Double(editingTeacher!.salary)
+                }
             }
             <<< TextRow(){
                 $0.title = "Subject"
                 $0.placeholder = "Main Subject"
                 $0.tag = "teacher_subject"
+                $0.value = editingTeacher?.subject
         }
         //            +++ Section(header: "Email Rule, Required Rule", footer: "Options: Validates on change after blurred")
         //            <<< TextRow() {
@@ -123,10 +133,10 @@ class AddTeacherViewController: FormViewController {
     }
 
     private func createTeacher(teacherDetails:TeacherdetailsType) {
-            let manager = PeoplePersistenceManager()
-            manager.createTeacher(nationalID: teacherDetails.nationalID, name: teacherDetails.name, age: teacherDetails.age, salary: teacherDetails.salary, subject: teacherDetails.subject)
-            manager.saveContext()
-            dismissVC()
+        let manager = PeoplePersistenceManager()
+        manager.createTeacher(nationalID: teacherDetails.nationalID, name: teacherDetails.name, age: teacherDetails.age, salary: teacherDetails.salary, subject: teacherDetails.subject)
+        manager.saveContext()
+        dismissVC()
     }
 
     private func updateExistingTeacher(teacherDetails:TeacherdetailsType) {
