@@ -20,7 +20,6 @@ class AddStudentViewController: FormViewController {
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if isEditMode {
@@ -29,7 +28,6 @@ class AddStudentViewController: FormViewController {
             print("Normal mode")
         }
         configureForm()
-        // Do any additional setup after loading the view.
     }
 
     private func configureForm() {
@@ -66,22 +64,6 @@ class AddStudentViewController: FormViewController {
                     $0.value = Int(editingStudent!.year)
                 }        }
 
-        //            +++ Section(header: "Email Rule, Required Rule", footer: "Options: Validates on change after blurred")
-        //            <<< TextRow() {
-        //                $0.title = "Email Rule"
-        //                $0.add(rule: RuleRequired())
-        //                $0.add(rule: RuleEmail())
-        //                $0.validationOptions = .validatesOnChangeAfterBlurred
-        //                }.cellUpdate { cell, row in
-        //                    if !row.isValid {
-        //                        cell.titleLabel?.textColor = .red
-        //                    }
-        //        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func doneAction(_ sender: UIBarButtonItem) {

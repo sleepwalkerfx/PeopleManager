@@ -17,49 +17,35 @@ class PeopleViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         self.peoplePersistenceManager = PeoplePersistenceManager()
         refreshScreen()
         self.fetchResultController?.delegate = self
     }
 
-    private func setupUI(){
-        // self.navigationItem.rightBarButtonItem =
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     private func refreshScreen() {
         if let persistenceManager = self.peoplePersistenceManager {
             let request: NSFetchRequest<Person> = Person.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "name",ascending:true)]
-            fetchResultController = NSFetchedResultsController<Person>(fetchRequest: request, managedObjectContext: persistenceManager.persistenceContainer.viewContext, sectionNameKeyPath: "groupType", cacheName: nil)
+            fetchResultController = NSFetchedResultsController<Person>(fetchRequest: request, managedObjectContext: persistenceManager.persistentContainer.viewContext, sectionNameKeyPath: "groupType", cacheName: nil)
         }
         try? fetchResultController?.performFetch()
         tableView.reloadData()
     }
 
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let personDetailsVC = segue.destination as? PersonDetailsViewController {
             let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
             personDetailsVC.person = fetchResultController?.object(at: indexPath!)
         }
     }
-
 }
 
 // MARK: - UITableViewDataSource
-
 extension PeopleViewController : UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,41 +87,9 @@ extension PeopleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let personToDelete = fetchResultController?.object(at: indexPath)
-            Person.remove(person: personToDelete!, from: (self.peoplePersistenceManager?.persistenceContainer.viewContext)!)
+            Person.remove(person: personToDelete!, from: (self.peoplePersistenceManager?.persistentContainer.viewContext)!)
             self.peoplePersistenceManager?.saveContext()
         }
     }
 }
 
-extension PeopleViewController:NSFetchedResultsControllerDelegate {
-
-    public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-
-    public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert: tableView.insertSections([sectionIndex], with: .fade)
-        case .delete: tableView.deleteSections([sectionIndex], with: .fade)
-        default: break
-        }
-    }
-    public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath!], with: .fade)
-        case .move:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        }
-    }
-
-    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-
-}

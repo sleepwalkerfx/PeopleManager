@@ -11,10 +11,10 @@ import CoreData
 
 class PeoplePersistenceManager {
 
-    let persistenceContainer: NSPersistentContainer
+    let persistentContainer: NSPersistentContainer!
 
     init(container: NSPersistentContainer) {
-        self.persistenceContainer = container
+        self.persistentContainer = container
     }
 
     convenience init() {
@@ -22,9 +22,9 @@ class PeoplePersistenceManager {
     }
 
     func saveContext() {
-        if self.persistenceContainer.viewContext.hasChanges {
+        if self.persistentContainer.viewContext.hasChanges {
             do {
-                try self.persistenceContainer.viewContext.save()
+                try self.persistentContainer.viewContext.save()
             } catch {
                 print("Save error \(error)")
             }
@@ -32,11 +32,10 @@ class PeoplePersistenceManager {
     }
     
     //MARK: Students Operations
-
     @discardableResult
     func createStudent(nationalID: String, name: String, age: Int16 , year: Int16) -> Student? {
         do {
-            return try Student.createStudent(nationalID: nationalID, name: name, age: age, year: year, into: persistenceContainer.viewContext)
+            return try Student.createStudent(nationalID: nationalID, name: name, age: age, year: year, into: persistentContainer.viewContext)
         } catch PersonError.idAlreadyExist {
             print("USER EXIST EXCEPTION!")
         } catch {
@@ -45,18 +44,19 @@ class PeoplePersistenceManager {
     }
 
     func fetchAllStudents() -> [Student] {
-        let allStudents = Student.fetchAll(context: persistenceContainer.viewContext)
+        let allStudents = Student.fetchAll(context: persistentContainer.viewContext)
         return allStudents ?? [Student]()
     }
+
 
     //MARK: Teachers Operations
     @discardableResult
     func createTeacher(nationalID: String, name: String, age: Int16 , salary: Float, subject:String) -> Teacher? {
-        return try? Teacher.createTeacher(nationalID: nationalID, name: name, age: age, salary: salary, subject: subject, into: persistenceContainer.viewContext)
+        return try? Teacher.createTeacher(nationalID: nationalID, name: name, age: age, salary: salary, subject: subject, into: persistentContainer.viewContext)
     }
 
     func fetchAllTeachers() -> [Student] {
-        let allStudents = Student.fetchAll(context: persistenceContainer.viewContext)
+        let allStudents = Student.fetchAll(context: persistentContainer.viewContext)
         return allStudents ?? [Student]()
     }
 

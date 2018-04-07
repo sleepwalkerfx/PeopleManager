@@ -14,7 +14,7 @@
         <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-173" positionY="-153" width="128" height="103"/>
+        <element name="Person" positionX="-173" positionY="-153" width="128" height="105"/>
         <element name="Student" positionX="-263" positionY="-0" width="128" height="60"/>
         <element name="Teacher" positionX="-81" positionY="-0" width="128" height="75"/>
     </elements>

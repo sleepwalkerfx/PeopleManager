@@ -29,14 +29,10 @@ class Student: Person {
         return student
     }
 
-
     class func fetchAll(context: NSManagedObjectContext) -> [Student]? {
         let request:NSFetchRequest<Student> = Student.fetchRequest()
         let results = try? context.fetch(request)
         return results
     }
-
-
 }
-// add people manager class // facade
-// use this class to query for existing people,
+

@@ -44,10 +44,4 @@ class Person: NSManagedObject {
         context.delete(person)
     }
 
-
-    //    class func fetchAll <T:NSManagedObject> (context: NSManagedObjectContext) -> [T]? {
-    //        let request:NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
-    //        let results = try? context.fetch(request)
-    //        return results
-    //    }
 }

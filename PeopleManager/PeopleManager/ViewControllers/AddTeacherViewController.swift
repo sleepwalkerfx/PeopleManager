@@ -71,17 +71,6 @@ class AddTeacherViewController: FormViewController {
                 $0.tag = "teacher_subject"
                 $0.value = editingTeacher?.subject
         }
-        //            +++ Section(header: "Email Rule, Required Rule", footer: "Options: Validates on change after blurred")
-        //            <<< TextRow() {
-        //                $0.title = "Email Rule"
-        //                $0.add(rule: RuleRequired())
-        //                $0.add(rule: RuleEmail())
-        //                $0.validationOptions = .validatesOnChangeAfterBlurred
-        //                }.cellUpdate { cell, row in
-        //                    if !row.isValid {
-        //                        cell.titleLabel?.textColor = .red
-        //                    }
-        //        }
     }
 
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
