@@ -189,7 +189,7 @@
         <!--ADD TEACHER-->
         <scene sceneID="DMH-n1-uZl">
             <objects>
-                <viewController id="WTm-Z2-9df" customClass="AddPersonViewController" customModule="PeopleManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WTm-Z2-9df" customClass="AddTeacherViewController" customModule="PeopleManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jgu-bP-fo7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,8 +197,16 @@
                         <viewLayoutGuide key="safeArea" id="B1s-qg-nH1"/>
                     </view>
                     <navigationItem key="navigationItem" title="ADD TEACHER" id="GEI-ZN-UDY">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="QCd-la-e2I"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="Lwm-rn-Br9"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="QCd-la-e2I">
+                            <connections>
+                                <action selector="cancelAction:" destination="WTm-Z2-9df" id="KuU-1f-XUE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Lwm-rn-Br9">
+                            <connections>
+                                <action selector="doneAction:" destination="WTm-Z2-9df" id="czT-nA-zhn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kod-hl-EEG" userLabel="First Responder" sceneMemberID="firstResponder"/>

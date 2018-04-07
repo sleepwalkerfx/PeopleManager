@@ -1,26 +1,25 @@
 //
-//  AddPeopleViewController.swift
+//  AddTeacherViewController.swift
 //  PeopleManager
 //
-//  Created by Rukshan Marapana on 4/5/18.
+//  Created by Rukshan Marapana on 4/7/18.
 //  Copyright © 2018 Rukshan Marapana. All rights reserved.
 //
 
 import UIKit
 import Eureka
 
-class AddStudentViewController: FormViewController {
+class AddTeacherViewController: FormViewController {
 
     private var isEditMode:Bool = false
-    var editingStudent: Student? {
+    var editingTeacher: Teacher? {
         didSet{
-            if editingStudent != nil {
+            if editingTeacher != nil {
                 isEditMode = true
             }
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if isEditMode {
@@ -37,27 +36,31 @@ class AddStudentViewController: FormViewController {
             <<< TextRow(){
                 $0.title = "ID Number"
                 $0.placeholder = "Enter ID number here"
-                $0.tag = "student_id"
+                $0.tag = "teacher_id"
             }
             <<< TextRow(){ row in
                 row.title = "Name"
                 row.placeholder = "Enter your name here"
-                row.tag = "student_name"
+                row.tag = "teacher_name"
             }
             <<< IntRow(){
                 $0.title = "Age"
                 $0.placeholder = "Enter your age here"
                 //$0.value = 0
-                $0.tag = "student_age"
+                $0.tag = "teacher_age"
             }
             +++ Section("Other Details")
-            <<< IntRow(){
-                $0.title = "Year"
-                $0.placeholder = "Course Year"
+            <<< DecimalRow(){
+                $0.title = "Salary"
+                $0.placeholder = "Monthly salary"
                 // $0.value = 0
-                $0.tag = "student_year"
+                $0.tag = "teacher_salary"
             }
-
+            <<< TextRow(){
+                $0.title = "Subject"
+                $0.placeholder = "Main Subject"
+                $0.tag = "teacher_subject"
+        }
         //            +++ Section(header: "Email Rule, Required Rule", footer: "Options: Validates on change after blurred")
         //            <<< TextRow() {
         //                $0.title = "Email Rule"
@@ -75,31 +78,32 @@ class AddStudentViewController: FormViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true) {
         }
     }
-
+    
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
 
-        guard let studentDetails = getStudentDetails() else {
+        guard let teacherDetails = getTeacherDetails() else {
             return
         }
         if isEditMode {
-            updateExistingStudent(studentDetails: studentDetails)
+            updateExistingTeacher(teacherDetails: teacherDetails)
         } else {
-            createStudent(studentDetails: studentDetails)
+            createTeacher(teacherDetails: teacherDetails)
         }
     }
 
-    typealias StudentdetailsType = (nationalID:String,name:String,age:Int16,year:Int16)
+    typealias TeacherdetailsType = (nationalID:String,name:String,age:Int16,salary:Float,subject:String)
 
-    private func getStudentDetails() -> (StudentdetailsType)? {
-        let idRow:TextRow? = form.rowBy(tag: "student_id")
-        let nameRow:TextRow? = form.rowBy(tag: "student_name")
-        let ageRow:IntRow? = form.rowBy(tag: "student_age")
-        let yearRow:IntRow? = form.rowBy(tag: "student_year")
+    private func getTeacherDetails() -> (TeacherdetailsType)? {
+        let idRow:TextRow? = form.rowBy(tag: "teacher_id")
+        let nameRow:TextRow? = form.rowBy(tag: "teacher_name")
+        let ageRow:IntRow? = form.rowBy(tag: "teacher_age")
+        let salaryRow:DecimalRow? = form.rowBy(tag: "teacher_salary")
+        let subjectRow:TextRow? = form.rowBy(tag: "teacher_subject")
 
         guard let id = idRow?.value else {
             print("no id given")
@@ -113,27 +117,31 @@ class AddStudentViewController: FormViewController {
             print("no age given")
             return nil
         }
-        guard let year = yearRow?.value else {
+        guard let salary = salaryRow?.value else {
             print("no salary given")
             return nil
         }
-
-        return(id,name,Int16(age),Int16(year))
+        guard let subject = subjectRow?.value else {
+            print("no subject given")
+            return nil
+        }
+        return (id,name,Int16(age) ,Float(salary),subject)
     }
 
-    private func createStudent(studentDetails:StudentdetailsType) {
-        let manager = PeoplePersistenceManager()
-        manager.createStudent(nationalID: studentDetails.nationalID, name: studentDetails.name, age: studentDetails.age, year: studentDetails.year)
-        manager.saveContext()
-        dismissVC()
+    private func createTeacher(teacherDetails:TeacherdetailsType) {
+            let manager = PeoplePersistenceManager()
+            manager.createTeacher(nationalID: teacherDetails.nationalID, name: teacherDetails.name, age: teacherDetails.age, salary: teacherDetails.salary, subject: teacherDetails.subject)
+            manager.saveContext()
+            dismissVC()
     }
 
-    private func updateExistingStudent(studentDetails:StudentdetailsType) {
+    private func updateExistingTeacher(teacherDetails:TeacherdetailsType) {
 
-        editingStudent?.nationalIdentityNo = studentDetails.nationalID
-        editingStudent?.name = studentDetails.name
-        editingStudent?.age = studentDetails.age
-        editingStudent?.year = studentDetails.year
+        editingTeacher?.nationalIdentityNo = teacherDetails.nationalID
+        editingTeacher?.name = teacherDetails.name
+        editingTeacher?.age = teacherDetails.age
+        editingTeacher?.salary = teacherDetails.salary
+        editingTeacher?.subject = teacherDetails.subject
         try? AppDelegate.viewContext.save()
         dismissVC()
     }
@@ -141,5 +149,5 @@ class AddStudentViewController: FormViewController {
     private func dismissVC() {
         self.dismiss(animated: true, completion: nil)
     }
-
+    
 }
