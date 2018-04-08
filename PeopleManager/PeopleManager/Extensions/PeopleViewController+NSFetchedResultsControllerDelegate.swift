@@ -5,6 +5,7 @@
 //  Created by Rukshan Marapana on 4/8/18.
 //  Copyright © 2018 Rukshan Marapana. All rights reserved.
 //
+// For Automatic TableView Update Functionlity on CoreData changes
 
 import Foundation
 import CoreData

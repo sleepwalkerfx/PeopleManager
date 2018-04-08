@@ -72,7 +72,6 @@ class AddTeacherViewController: FormViewController {
     }
     
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-
         guard let teacherDetails = getTeacherDetails() else {
             return
         }
@@ -83,6 +82,7 @@ class AddTeacherViewController: FormViewController {
         }
     }
 
+    // Tuple to reuse
     typealias TeacherdetailsType = (nationalID:String,name:String,age:Int16,salary:Float,subject:String)
 
     private func getTeacherDetails() -> (TeacherdetailsType)? {
@@ -130,7 +130,6 @@ class AddTeacherViewController: FormViewController {
     }
 
     private func updateExistingTeacher(teacherDetails:TeacherdetailsType) {
-
         editingTeacher?.nationalIdentityNo = teacherDetails.nationalID
         editingTeacher?.name = teacherDetails.name
         editingTeacher?.age = teacherDetails.age

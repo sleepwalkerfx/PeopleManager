@@ -22,10 +22,7 @@ class PeopleViewController: UIViewController {
         self.fetchResultController?.delegate = self
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
+    // Populating the data for the first time
     private func refreshScreen() {
         if let persistenceManager = self.peoplePersistenceManager {
             let request: NSFetchRequest<Person> = Person.fetchRequest()

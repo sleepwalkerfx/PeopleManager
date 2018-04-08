@@ -112,12 +112,10 @@ class AddStudentViewController: FormViewController {
         } catch {
             self.presentAlertWithTitle(title: Constants.ErrorMessages.UnknownError, message: Constants.ErrorMessages.UserCreationFailedError)
         }
-
         dismissVC()
     }
 
     private func updateExistingStudent(studentDetails:StudentdetailsType) {
-
         editingStudent?.nationalIdentityNo = studentDetails.nationalID
         editingStudent?.name = studentDetails.name
         editingStudent?.age = studentDetails.age
