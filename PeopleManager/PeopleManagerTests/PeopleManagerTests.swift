@@ -16,9 +16,7 @@ class PeopleManagerTests: XCTestCase {
     var sut:PeoplePersistenceManager!
     override func setUp() {
         super.setUp()
-        initStubs()
-
-         sut = PeoplePersistenceManager()
+        sut = PeoplePersistenceManager()
 
         //Listen to the change in context
         NotificationCenter.default.addObserver(self, selector: #selector(contextSaved(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave , object: nil)    }
