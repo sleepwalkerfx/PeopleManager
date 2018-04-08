@@ -54,7 +54,7 @@ class PersonDetailsViewController: UIViewController {
     }
 
     private func editStudent(student:Student){
-        guard let editStudentNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "editStudentNC") as? UINavigationController else {
+        guard let editStudentNavigationController = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardId.EditStudentNavId) as? UINavigationController else {
             return
         }
         if let editStudentVC = editStudentNavigationController.viewControllers.first as? AddStudentViewController {
@@ -65,7 +65,7 @@ class PersonDetailsViewController: UIViewController {
     }
 
     private func editTeacher(teacher:Teacher){
-        guard let editTeacherNavigationController = self.storyboard?.instantiateViewController(withIdentifier: "editTeacherNC") as? UINavigationController else {
+        guard let editTeacherNavigationController = self.storyboard?.instantiateViewController(withIdentifier: Constants.StoryboardId.EditTeacherNavId) as? UINavigationController else {
             return
         }
         if let editTeacherVC = editTeacherNavigationController.viewControllers.first as? AddTeacherViewController {

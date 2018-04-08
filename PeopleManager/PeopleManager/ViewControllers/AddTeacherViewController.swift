@@ -47,7 +47,7 @@ class AddTeacherViewController: FormViewController {
                 $0.placeholder = Constants.TeacherFormKeys.AgePlaceholder
                 $0.tag = Constants.TeacherFormKeys.AgeTag
                 if isEditMode {
-                $0.value = Int(editingTeacher!.age)
+                    $0.value = Int(editingTeacher!.age)
                 }
             }
             +++ Section(Constants.TeacherFormKeys.SectionOtherDetails)
@@ -117,8 +117,14 @@ class AddTeacherViewController: FormViewController {
 
     private func createTeacher(teacherDetails:TeacherdetailsType) {
         let manager = PeoplePersistenceManager()
-        manager.createTeacher(nationalID: teacherDetails.nationalID, name: teacherDetails.name, age: teacherDetails.age, salary: teacherDetails.salary, subject: teacherDetails.subject)
-        manager.saveContext()
+        do {
+            try manager.createTeacher(nationalID: teacherDetails.nationalID, name: teacherDetails.name, age: teacherDetails.age, salary: teacherDetails.salary, subject: teacherDetails.subject)
+            manager.saveContext()
+        } catch PersonError.idAlreadyExist {
+            self.presentAlertWithTitle(title: "User Exists", message: "A user with this national id number already exists")
+        } catch {
+            self.presentAlertWithTitle(title: "Unknown Error", message: "User creation failed")
+        }
         dismissVC()
     }
 

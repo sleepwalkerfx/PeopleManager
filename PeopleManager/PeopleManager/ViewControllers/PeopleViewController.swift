@@ -50,7 +50,6 @@ extension PeopleViewController : UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         if let sections = fetchResultController?.sections {
-            print("sections count \(sections.count)")
             return sections.count
         }
         return 0

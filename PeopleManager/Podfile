@@ -7,7 +7,7 @@ target 'PeopleManager' do
 
   # Pods for PeopleManager
   pod 'Eureka'
-
+  
   target 'PeopleManagerTests' do
     inherit! :search_paths
     # Pods for testing

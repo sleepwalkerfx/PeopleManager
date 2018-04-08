@@ -13,7 +13,7 @@ struct Constants {
     struct StudentFormKeys {
         static let SectionPersonalInfo = "Personal Information"
         static let IdNumberTitle = "ID Number"
-        static let IdNumberPlaceholder = "Enter ID number here"
+        static let IdNumberPlaceholder = "National ID Card number"
         static let IdNumberTag = "student_id"
 
         static let NameRowTitle = "Name"
@@ -62,5 +62,10 @@ struct Constants {
     struct TeacherProfile {
         static let Title = "TEACHER PROFILE"
         static let EditTitle = "Edit Teacher"
+    }
+
+    struct StoryboardId {
+        static let EditStudentNavId = "editStudentNC"
+        static let EditTeacherNavId = "editTeacherNC"
     }
 }

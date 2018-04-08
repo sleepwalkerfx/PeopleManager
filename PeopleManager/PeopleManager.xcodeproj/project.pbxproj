@@ -30,6 +30,7 @@
 		81DA41EA2079E77000E7EF14 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DA41E72079E76F00E7EF14 /* Teacher.swift */; };
 		81DA41EB2079E77000E7EF14 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DA41E82079E76F00E7EF14 /* Student.swift */; };
 		81DA41EE2079F4F800E7EF14 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DA41ED2079F4F800E7EF14 /* Constants.swift */; };
+		81DA41F1207A0AA600E7EF14 /* UIViewController+ErrorReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DA41F0207A0AA600E7EF14 /* UIViewController+ErrorReporting.swift */; };
 		9453A07891A9233988E9599E /* Pods_PeopleManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7155C6FC7AFDF68AA2A59F18 /* Pods_PeopleManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		81DA41E72079E76F00E7EF14 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		81DA41E82079E76F00E7EF14 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		81DA41ED2079F4F800E7EF14 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		81DA41F0207A0AA600E7EF14 /* UIViewController+ErrorReporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorReporting.swift"; sourceTree = "<group>"; };
 		9912ADD106B9A1F1CA5BA5CD /* Pods-PeopleManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleManager/Pods-PeopleManager.release.xcconfig"; sourceTree = "<group>"; };
 		DB6382C8B616CBA1BF8CB7C8 /* Pods-PeopleManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleManagerTests/Pods-PeopleManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 		814570892074F2F7000CD72A /* PeopleManager */ = {
 			isa = PBXGroup;
 			children = (
+				81DA41EF207A097C00E7EF14 /* Protocols */,
 				81DA41EC2079F48A00E7EF14 /* Supporting Files */,
 				81DA41DF20796B3100E7EF14 /* Extensions */,
 				816E985D207744E80065E2BB /* Views */,
@@ -199,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				81DA41E020796C1000E7EF14 /* PeopleViewController+NSFetchedResultsControllerDelegate.swift */,
+				81DA41F0207A0AA600E7EF14 /* UIViewController+ErrorReporting.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +224,13 @@
 				81DA41ED2079F4F800E7EF14 /* Constants.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		81DA41EF207A097C00E7EF14 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		E472C8C7EE2EF259A6890A38 /* Frameworks */ = {
@@ -445,6 +456,7 @@
 				813B359520777EE8005BEF59 /* PersonDetailsViewController.swift in Sources */,
 				8189D9D32075ED03001C7106 /* AddStudentViewController.swift in Sources */,
 				814570932074F2F7000CD72A /* PeopleManager.xcdatamodeld in Sources */,
+				81DA41F1207A0AA600E7EF14 /* UIViewController+ErrorReporting.swift in Sources */,
 				817E63D1207559FC002A0F09 /* Student.swift in Sources */,
 				81DA41E120796C1000E7EF14 /* PeopleViewController+NSFetchedResultsControllerDelegate.swift in Sources */,
 				817E63CF207559DA002A0F09 /* Teacher.swift in Sources */,

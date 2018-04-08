@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-enum PersonError: Error {
+public enum PersonError: Error {
     case idAlreadyExist
 }
 

@@ -33,11 +33,12 @@ class PeoplePersistenceManager {
     
     //MARK: Students Operations
     @discardableResult
-    func createStudent(nationalID: String, name: String, age: Int16 , year: Int16) -> Student? {
+    func createStudent(nationalID: String, name: String, age: Int16 , year: Int16) throws -> Student? {
         do {
             return try Student.createStudent(nationalID: nationalID, name: name, age: age, year: year, into: persistentContainer.viewContext)
         } catch PersonError.idAlreadyExist {
             print("USER EXIST EXCEPTION!")
+            throw PersonError.idAlreadyExist
         } catch {
         }
         return nil
@@ -51,8 +52,17 @@ class PeoplePersistenceManager {
 
     //MARK: Teachers Operations
     @discardableResult
-    func createTeacher(nationalID: String, name: String, age: Int16 , salary: Float, subject:String) -> Teacher? {
-        return try? Teacher.createTeacher(nationalID: nationalID, name: name, age: age, salary: salary, subject: subject, into: persistentContainer.viewContext)
+    func createTeacher(nationalID: String, name: String, age: Int16 , salary: Float, subject:String) throws -> Teacher? {
+       // return try? Teacher.createTeacher(nationalID: nationalID, name: name, age: age, salary: salary, subject: subject, into: persistentContainer.viewContext)
+        do {
+            return try Teacher.createTeacher(nationalID: nationalID, name: name, age: age, salary: salary, subject: subject, into: persistentContainer.viewContext)
+        } catch PersonError.idAlreadyExist {
+            print("USER EXIST EXCEPTION!")
+            throw PersonError.idAlreadyExist
+        }catch {
+
+        }
+        return nil
     }
 
     func fetchAllTeachers() -> [Student] {

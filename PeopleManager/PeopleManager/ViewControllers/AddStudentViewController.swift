@@ -81,19 +81,19 @@ class AddStudentViewController: FormViewController {
         let yearRow:IntRow? = form.rowBy(tag: Constants.StudentFormKeys.YearTag)
 
         guard let id = idRow?.value else {
-            print("no id given")
+            print("No id given")
             return nil
         }
         guard let name = nameRow?.value else {
-            print("no name given")
+            print("No name given")
             return nil
         }
         guard let age = ageRow?.value else {
-            print("no age given")
+            print("No age given")
             return nil
         }
         guard let year = yearRow?.value else {
-            print("no salary given")
+            print("No year given")
             return nil
         }
 
@@ -102,8 +102,16 @@ class AddStudentViewController: FormViewController {
 
     private func createStudent(studentDetails:StudentdetailsType) {
         let manager = PeoplePersistenceManager()
-        manager.createStudent(nationalID: studentDetails.nationalID, name: studentDetails.name, age: studentDetails.age, year: studentDetails.year)
-        manager.saveContext()
+        do {
+            try manager.createStudent(nationalID: studentDetails.nationalID, name: studentDetails.name, age: studentDetails.age, year: studentDetails.year)
+             manager.saveContext()
+
+        } catch PersonError.idAlreadyExist {
+            self.presentAlertWithTitle(title: "User Exists", message: "A user with this national id number already exists")
+        } catch {
+            self.presentAlertWithTitle(title: "Unknown Error", message: "User creation failed")
+        }
+
         dismissVC()
     }
 
