@@ -1,2 +1,9 @@
 # PeopleManager
-Core Data 
+
+Architecture : MVC
+
+Design Patterns Used:
+
+Delegate
+Observer
+Facade
