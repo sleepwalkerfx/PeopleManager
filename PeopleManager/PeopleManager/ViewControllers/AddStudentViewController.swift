@@ -79,21 +79,22 @@ class AddStudentViewController: FormViewController {
         let nameRow:TextRow? = form.rowBy(tag: Constants.StudentFormKeys.NameTag)
         let ageRow:IntRow? = form.rowBy(tag: Constants.StudentFormKeys.AgeTag)
         let yearRow:IntRow? = form.rowBy(tag: Constants.StudentFormKeys.YearTag)
+        let errorTitle = Constants.ErrorMessages.MissingInfoErrorTitle
 
         guard let id = idRow?.value else {
-            print("No id given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoIdError)
             return nil
         }
         guard let name = nameRow?.value else {
-            print("No name given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoNameError)
             return nil
         }
         guard let age = ageRow?.value else {
-            print("No age given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoAgeError)
             return nil
         }
         guard let year = yearRow?.value else {
-            print("No year given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoYearError)
             return nil
         }
 
@@ -104,12 +105,12 @@ class AddStudentViewController: FormViewController {
         let manager = PeoplePersistenceManager()
         do {
             try manager.createStudent(nationalID: studentDetails.nationalID, name: studentDetails.name, age: studentDetails.age, year: studentDetails.year)
-             manager.saveContext()
+            manager.saveContext()
 
         } catch PersonError.idAlreadyExist {
-            self.presentAlertWithTitle(title: "User Exists", message: "A user with this national id number already exists")
+            self.presentAlertWithTitle(title: Constants.ErrorMessages.UserExistsError, message: Constants.ErrorMessages.UserExistsErrorMessage)
         } catch {
-            self.presentAlertWithTitle(title: "Unknown Error", message: "User creation failed")
+            self.presentAlertWithTitle(title: Constants.ErrorMessages.UnknownError, message: Constants.ErrorMessages.UserCreationFailedError)
         }
 
         dismissVC()

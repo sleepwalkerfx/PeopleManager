@@ -74,4 +74,18 @@ struct Constants {
         static let StudentGroupType = "Students"
 
     }
+
+    struct ErrorMessages {
+        static let MissingInfoErrorTitle = "Missing Info"
+        static let NoIdError = "No ID given"
+        static let NoNameError = "No name given"
+        static let NoAgeError = "No age given"
+        static let NoSalaryError = "No salary given"
+        static let NoSubjectError = "No subject given"
+        static let NoYearError = "No year given"
+        static let UserExistsError = "User Exists"
+        static let UserExistsErrorMessage = "A user with this national id number already exists"
+        static let UnknownError = "Unknown Error"
+        static let UserCreationFailedError = "User creation failed"
+    }
 }

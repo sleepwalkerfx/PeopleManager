@@ -37,7 +37,6 @@ class PeoplePersistenceManager {
         do {
             return try Student.createStudent(nationalID: nationalID, name: name, age: age, year: year, into: persistentContainer.viewContext)
         } catch PersonError.idAlreadyExist {
-            print("USER ALREADY EXIST EXCEPTION!")
             throw PersonError.idAlreadyExist
         } catch {
             throw error

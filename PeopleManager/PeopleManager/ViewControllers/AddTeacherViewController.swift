@@ -91,25 +91,26 @@ class AddTeacherViewController: FormViewController {
         let ageRow:IntRow? = form.rowBy(tag: Constants.TeacherFormKeys.AgeTag)
         let salaryRow:DecimalRow? = form.rowBy(tag: Constants.TeacherFormKeys.SalaryTag)
         let subjectRow:TextRow? = form.rowBy(tag: Constants.TeacherFormKeys.SubjectTag)
+        let errorTitle = Constants.ErrorMessages.MissingInfoErrorTitle
 
         guard let id = idRow?.value else {
-            print("no id given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoIdError)
             return nil
         }
         guard let name = nameRow?.value else {
-            print("no name given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoNameError)
             return nil
         }
         guard let age = ageRow?.value else {
-            print("no age given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoAgeError)
             return nil
         }
         guard let salary = salaryRow?.value else {
-            print("no salary given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoSalaryError)
             return nil
         }
         guard let subject = subjectRow?.value else {
-            print("no subject given")
+            presentAlertWithTitle(title: errorTitle, message: Constants.ErrorMessages.NoSubjectError)
             return nil
         }
         return (id,name,Int16(age) ,Float(salary),subject)
@@ -121,9 +122,9 @@ class AddTeacherViewController: FormViewController {
             try manager.createTeacher(nationalID: teacherDetails.nationalID, name: teacherDetails.name, age: teacherDetails.age, salary: teacherDetails.salary, subject: teacherDetails.subject)
             manager.saveContext()
         } catch PersonError.idAlreadyExist {
-            self.presentAlertWithTitle(title: "User Exists", message: "A user with this national id number already exists")
+            self.presentAlertWithTitle(title: Constants.ErrorMessages.UserExistsError, message: Constants.ErrorMessages.UserExistsErrorMessage)
         } catch {
-            self.presentAlertWithTitle(title: "Unknown Error", message: "User creation failed")
+            self.presentAlertWithTitle(title: Constants.ErrorMessages.UnknownError, message: Constants.ErrorMessages.UserCreationFailedError)
         }
         dismissVC()
     }

@@ -24,7 +24,7 @@ class Teacher: Person {
         teacher.age = age
         teacher.salary = salary
         teacher.subject = subject
-        teacher.groupType = Constants.CoreDataIdentifiers.StudentGroupType
+        teacher.groupType = Constants.CoreDataIdentifiers.TeacherGroupType
         teacher.nationalIdentityNo = nationalID
         return teacher
     }
