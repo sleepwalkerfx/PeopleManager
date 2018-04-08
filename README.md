@@ -1,6 +1,6 @@
 # PeopleManager
 
-Architecture : MVC
+Architecture: MVC
 Language: Swift 4.1
 
 Design Patterns Used:
