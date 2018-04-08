@@ -14,7 +14,6 @@ class Student: Person {
     class func createStudent(nationalID: String, name: String, age: Int16, year: Int16, into context: NSManagedObjectContext) throws -> Student {
         do {
             if try findPerson(nationalIdNumber: nationalID, inContext: context) != nil{
-                print("User already exists!")
                 throw PersonError.idAlreadyExist
             }
         }catch {
@@ -24,7 +23,7 @@ class Student: Person {
         student.name = name
         student.age = age
         student.year = year
-        student.groupType = "Students"
+        student.groupType = Constants.CoreDataIdentifiers.StudentGroupType
         student.nationalIdentityNo = nationalID
         return student
     }

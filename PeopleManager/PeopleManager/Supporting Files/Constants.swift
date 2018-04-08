@@ -68,4 +68,10 @@ struct Constants {
         static let EditStudentNavId = "editStudentNC"
         static let EditTeacherNavId = "editTeacherNC"
     }
+
+    struct CoreDataIdentifiers {
+        static let TeacherGroupType = "Teachers"
+        static let StudentGroupType = "Students"
+
+    }
 }
