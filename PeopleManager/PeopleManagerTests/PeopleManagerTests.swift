@@ -56,7 +56,7 @@ class PeopleManagerTests: XCTestCase {
         //Assert save is called via notification (wait)
         
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave, object: nil, handler: nil)
-
+        
         sut.saveContext()
         waitForExpectations(timeout: 1.0, handler: nil)
 

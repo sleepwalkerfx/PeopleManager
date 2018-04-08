@@ -29,7 +29,7 @@ class PeopleViewController: UIViewController {
     private func refreshScreen() {
         if let persistenceManager = self.peoplePersistenceManager {
             let request: NSFetchRequest<Person> = Person.fetchRequest()
-            request.sortDescriptors = [NSSortDescriptor(key: "name",ascending:true)]
+            request.sortDescriptors = [NSSortDescriptor(key: "nationalIdentityNo",ascending:true)]
             fetchResultController = NSFetchedResultsController<Person>(fetchRequest: request, managedObjectContext: persistenceManager.persistentContainer.viewContext, sectionNameKeyPath: "groupType", cacheName: nil)
         }
         try? fetchResultController?.performFetch()
