@@ -18,7 +18,7 @@ class PeopleManagerTests: XCTestCase {
         super.setUp()
         initStubs()
 
-         sut = PeoplePersistenceManager(container: mockPersistantContainer)
+         sut = PeoplePersistenceManager()
 
         //Listen to the change in context
         NotificationCenter.default.addObserver(self, selector: #selector(contextSaved(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave , object: nil)    }
@@ -58,6 +58,7 @@ class PeopleManagerTests: XCTestCase {
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave, object: nil, handler: nil)
         
         sut.saveContext()
+        //This test will fail on 2nd time, since same object is being added, which will not be saved
         waitForExpectations(timeout: 1.0, handler: nil)
 
 

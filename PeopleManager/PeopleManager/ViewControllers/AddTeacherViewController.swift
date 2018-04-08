@@ -22,53 +22,47 @@ class AddTeacherViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if isEditMode {
-            print("Edit mode")
-        } else {
-            print("Normal mode")
-        }
         configureForm()
-        // Do any additional setup after loading the view.
     }
 
     private func configureForm() {
-        form +++ Section("Personal Information")
+        form +++ Section(Constants.TeacherFormKeys.SectionPersonalInfo)
             <<< TextRow(){
-                $0.title = "ID Number"
-                $0.placeholder = "Enter ID number here"
-                $0.tag = "teacher_id"
+                $0.title = Constants.TeacherFormKeys.IdNumberTitle
+                $0.placeholder = Constants.TeacherFormKeys.IdNumberPlaceholder
+                $0.tag = Constants.TeacherFormKeys.IdNumberTag
                 $0.value = editingTeacher?.nationalIdentityNo
                 if isEditMode {
                     $0.disabled = true
                 }
             }
             <<< TextRow(){ row in
-                row.title = "Name"
-                row.placeholder = "Enter your name here"
-                row.tag = "teacher_name"
+                row.title = Constants.TeacherFormKeys.NameRowTitle
+                row.placeholder = Constants.TeacherFormKeys.NamePlaceholder
+                row.tag = Constants.TeacherFormKeys.NameTag
                 row.value = editingTeacher?.name
             }
             <<< IntRow(){
-                $0.title = "Age"
-                $0.placeholder = "Enter your age here"
-                $0.tag = "teacher_age"
+                $0.title = Constants.TeacherFormKeys.AgeRowTitle
+                $0.placeholder = Constants.TeacherFormKeys.AgePlaceholder
+                $0.tag = Constants.TeacherFormKeys.AgeTag
                 if isEditMode {
                 $0.value = Int(editingTeacher!.age)
                 }
             }
-            +++ Section("Other Details")
+            +++ Section(Constants.TeacherFormKeys.SectionOtherDetails)
             <<< DecimalRow(){
-                $0.title = "Salary"
-                $0.placeholder = "Monthly salary"
-                $0.tag = "teacher_salary"
+                $0.title = Constants.TeacherFormKeys.SalaryTitle
+                $0.placeholder = Constants.TeacherFormKeys.SalaryPlaceholder
+                $0.tag = Constants.TeacherFormKeys.SalaryTag
                 if isEditMode {
                     $0.value = Double(editingTeacher!.salary)
                 }
             }
             <<< TextRow(){
-                $0.title = "Subject"
-                $0.placeholder = "Main Subject"
-                $0.tag = "teacher_subject"
+                $0.title = Constants.TeacherFormKeys.SubjectTitle
+                $0.placeholder = Constants.TeacherFormKeys.SubjectPlaceholder
+                $0.tag = Constants.TeacherFormKeys.SubjectTag
                 $0.value = editingTeacher?.subject
         }
     }
@@ -92,11 +86,11 @@ class AddTeacherViewController: FormViewController {
     typealias TeacherdetailsType = (nationalID:String,name:String,age:Int16,salary:Float,subject:String)
 
     private func getTeacherDetails() -> (TeacherdetailsType)? {
-        let idRow:TextRow? = form.rowBy(tag: "teacher_id")
-        let nameRow:TextRow? = form.rowBy(tag: "teacher_name")
-        let ageRow:IntRow? = form.rowBy(tag: "teacher_age")
-        let salaryRow:DecimalRow? = form.rowBy(tag: "teacher_salary")
-        let subjectRow:TextRow? = form.rowBy(tag: "teacher_subject")
+        let idRow:TextRow? = form.rowBy(tag: Constants.TeacherFormKeys.IdNumberTag)
+        let nameRow:TextRow? = form.rowBy(tag: Constants.TeacherFormKeys.NameTag)
+        let ageRow:IntRow? = form.rowBy(tag: Constants.TeacherFormKeys.AgeTag)
+        let salaryRow:DecimalRow? = form.rowBy(tag: Constants.TeacherFormKeys.SalaryTag)
+        let subjectRow:TextRow? = form.rowBy(tag: Constants.TeacherFormKeys.SubjectTag)
 
         guard let id = idRow?.value else {
             print("no id given")
