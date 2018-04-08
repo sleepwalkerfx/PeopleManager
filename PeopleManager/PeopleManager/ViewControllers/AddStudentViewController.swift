@@ -59,11 +59,9 @@ class AddStudentViewController: FormViewController {
                     $0.value = Int(editingStudent!.year)
                 }
         }
-
     }
 
     @IBAction func doneAction(_ sender: UIBarButtonItem) {
-
         guard let studentDetails = getStudentDetails() else {
             return
         }

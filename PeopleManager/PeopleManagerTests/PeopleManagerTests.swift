@@ -50,18 +50,11 @@ class PeopleManagerTests: XCTestCase {
 
         _ = expectationForSaveNotification()
         sut.createStudent(nationalID: id, name: name, age: Int16(age), year: Int16(year))
-        //When save
-
-
         //Assert save is called via notification (wait)
-        
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave, object: nil, handler: nil)
-        
         sut.saveContext()
         //This test will fail on 2nd time, since same object is being added, which will not be saved
         waitForExpectations(timeout: 1.0, handler: nil)
-
-
     }
 
     //MARK:  In-memory Persistent Store (Mock)
@@ -108,50 +101,3 @@ class PeopleManagerTests: XCTestCase {
         saveNotificationCompleteHandler?(notification)
     }
 }
-
-
-//MARK: Creat some fakes
-extension PeopleManagerTests {
-
-    func initStubs() {
-
-        func insertStudent( name: String, age: Int16, id: String, year: Int16 ) -> Student? {
-
-            let obj = NSEntityDescription.insertNewObject(forEntityName: "Student", into: mockPersistantContainer.viewContext)
-
-            obj.setValue("Name 1", forKey: "name")
-            obj.setValue(12, forKey: "age")
-            obj.setValue("1", forKey: "nationalIdentityNo")
-            obj.setValue(2018, forKey: "year")
-            obj.setValue("Students",forKey:"groupType")
-
-            return obj as? Student
-        }
-        _ = insertStudent(name: "Name 1", age: 12, id: "1", year: 2018)
-        _ = insertStudent(name: "Name 2", age: 13, id: "2", year: 2018)
-        _ = insertStudent(name: "Name 3", age: 14, id: "3", year: 2018)
-        _ = insertStudent(name: "Name 4", age: 15, id: "4", year: 2018)
-        _ = insertStudent(name: "Name 5", age: 16, id: "5", year: 2018)
-
-        do {
-            try mockPersistantContainer.viewContext.save()
-        }  catch {
-            print("create fakes error \(error)")
-        }
-
-    }
-
-    func flush() {
-
-        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
-        let objs = try! mockPersistantContainer.viewContext.fetch(fetchRequest)
-        for case let obj as NSManagedObject in objs {
-            mockPersistantContainer.viewContext.delete(obj)
-        }
-
-        try! mockPersistantContainer.viewContext.save()
-
-    }
-
-}
-
