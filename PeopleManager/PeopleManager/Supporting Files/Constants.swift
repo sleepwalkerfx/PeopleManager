@@ -54,4 +54,13 @@ struct Constants {
         static let SubjectTag = "teacher_subject"
     }
 
+    struct StudentProfile {
+        static let Title = "STUDENT PROFILE"
+        static let EditTitle = "Edit Student"
+    }
+
+    struct TeacherProfile {
+        static let Title = "TEACHER PROFILE"
+        static let EditTitle = "Edit Teacher"
+    }
 }

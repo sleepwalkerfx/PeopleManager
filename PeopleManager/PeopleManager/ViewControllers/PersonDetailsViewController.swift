@@ -33,12 +33,12 @@ class PersonDetailsViewController: UIViewController {
             self.ageLabel.text = "Age: \(person!.age)"
 
             if person is Student {
-                self.titleLabel.text = "STUDENT PROFILE"
+                self.titleLabel.text = Constants.StudentProfile.Title
                 self.extraInfoFeild1.text = "Course Year: \((person as! Student).year)"
             }
 
             if person is Teacher {
-                self.titleLabel.text = "TEACHER PROFILE"
+                self.titleLabel.text = Constants.TeacherProfile.Title
                 self.extraInfoFeild1.text = "Salary: \((person as! Teacher).salary)"
                 self.extraInfoFeild2.text = "Subject: \((person as! Teacher).subject ?? "")"
 
@@ -58,7 +58,7 @@ class PersonDetailsViewController: UIViewController {
             return
         }
         if let editStudentVC = editStudentNavigationController.viewControllers.first as? AddStudentViewController {
-            editStudentVC.title = "Edit Student"
+            editStudentVC.title = Constants.StudentProfile.EditTitle
             editStudentVC.editingStudent =  student
             self.present(editStudentNavigationController, animated: true, completion: nil)
         }
@@ -69,7 +69,7 @@ class PersonDetailsViewController: UIViewController {
             return
         }
         if let editTeacherVC = editTeacherNavigationController.viewControllers.first as? AddTeacherViewController {
-            editTeacherVC.title = "Edit Teacher"
+            editTeacherVC.title = Constants.TeacherProfile.EditTitle
             editTeacherVC.editingTeacher = teacher
             self.present(editTeacherNavigationController, animated: true, completion: nil)
         }
